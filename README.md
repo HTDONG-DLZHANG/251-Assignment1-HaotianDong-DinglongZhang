@@ -1,1 +1,1 @@
-# 251-Assignment1-Haotian-Dong-Dinglong-Zhang
+# 251-Assignment1-Haotian Dong-Dinglong Zhang
