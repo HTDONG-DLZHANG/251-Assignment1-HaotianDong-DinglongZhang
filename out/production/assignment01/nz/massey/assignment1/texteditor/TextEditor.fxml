@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.massey.assignment1.texteditor.Controller">
+   <children>
+      <MenuBar fx:id="menubar" prefHeight="26.0" prefWidth="600.0">
+        <menus>
+          <Menu fx:id="menu" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="newfile" mnemonicParsing="false" onAction="#onMenuNew" text="New" />
+                  <MenuItem fx:id="openfile" mnemonicParsing="false" onAction="#onMenuOpen" text="Open" />
+                  <MenuItem fx:id="savefile" mnemonicParsing="false" onAction="#onMenuSave" text="Save" />
+                  <MenuItem fx:id="Timeanddate" mnemonicParsing="false" onAction="#onMenuTime" text="Time and Date" />
+                  <MenuItem fx:id="printfile" mnemonicParsing="false" onAction="#onMenuPrint" text="Print" />
+                  <MenuItem fx:id="Exit" mnemonicParsing="false" onAction="#onMenuExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu fx:id="search" mnemonicParsing="false" onAction="#onMenuSearch" text="Search" />
+          <Menu fx:id="view" mnemonicParsing="false" onAction="#onMenuView" text="View" />
+            <Menu fx:id="manage" mnemonicParsing="false" onAction="#onMenuManage" text="Manage" />
+            <Menu fx:id="help" mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem fx:id="about" mnemonicParsing="false" onAction="#onMenuAbout" text="About" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="mainarea" layoutY="25.0" prefHeight="800.0" prefWidth="1000.0">
+         <contextMenu>
+            <ContextMenu fx:id="Rightmenu">
+              <items>
+                <MenuItem fx:id="Copy" mnemonicParsing="false" onAction="#onMenuCopy" text="Copy" />
+                  <MenuItem fx:id="Paste" mnemonicParsing="false" onAction="#onMenuPaste" text="Paste" />
+                  <MenuItem fx:id="Cut" mnemonicParsing="false" onAction="#onMenuCut" text="Cut" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TextArea>
+   </children>
+</AnchorPane>
