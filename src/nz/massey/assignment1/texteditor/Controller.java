@@ -172,7 +172,7 @@ public class Controller {
         content.putString(text);
         clipboard.setContent(content);
         //Empty the textArea of the content that has been placed on the clipboard
-        
+
 
     }
 
