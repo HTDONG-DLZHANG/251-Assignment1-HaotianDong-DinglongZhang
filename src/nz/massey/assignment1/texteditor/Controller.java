@@ -20,6 +20,9 @@ import javafx.stage.FileChooser;
 import javax.jnlp.ClipboardService;
 import javax.jnlp.FileContents;
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.font.LayoutPath;
 import java.io.File;
 import java.io.FileInputStream;
@@ -163,12 +166,30 @@ public class Controller {
 
     @FXML
     void onMenuCut(ActionEvent event) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        String text = mainarea.getSelectedText();
+        content.putString(text);
+        clipboard.setContent(content);
+        //Empty the textArea of the content that has been placed on the clipboard
+        
 
     }
 
     @FXML
     void onMenuPaste(ActionEvent event) {
-
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        Transferable content = (Transferable) clipboard.getContent(null);
+        if (content != null) {
+            if (content.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+                if (mainarea.getSelectedText() != null) {
+                    mainarea.replaceSelection(String.valueOf(content));
+                } else {
+                    int mouseposition = mainarea.getCaretPosition();
+                    mainarea.insertText(mouseposition, String.valueOf(content));
+                }
+            }
+        }
     }
 
 }
