@@ -12,9 +12,12 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
+import javax.jnlp.ClipboardService;
 import javax.jnlp.FileContents;
 import java.awt.*;
 import java.awt.font.LayoutPath;
@@ -85,7 +88,7 @@ public class Controller {
 
     @FXML
     void onMenuNew(ActionEvent event) {
-        if ()
+
     }
 
     private File file;
@@ -147,6 +150,14 @@ public class Controller {
 
     @FXML
     void onMenuCopy(ActionEvent event) {
+        //Get the system clipboard
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        //Get selected content
+        String text = mainarea.getSelectedText();
+        content.putString(text);
+        //Put selected content on clipboard
+        clipboard.setContent(content);
 
     }
 
