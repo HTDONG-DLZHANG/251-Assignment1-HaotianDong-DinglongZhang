@@ -2,11 +2,14 @@ package nz.massey.assignment1.texteditor;
 
 /**
  * @Description texteditor
- * @Author Dinglong Zhang
- * @Date 2020-09-28 19:56
+ * @Author Haotian Dong
+ * @Date 2020-09-29 19:15
  */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -16,18 +19,19 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import jdk.nashorn.tools.Shell;
 
 import javax.jnlp.ClipboardService;
 import javax.jnlp.FileContents;
+import javax.swing.*;
+import javax.swing.text.DefaultStyledDocument;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.font.LayoutPath;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.ResultSet;
 
 public class Controller {
@@ -90,8 +94,13 @@ public class Controller {
     private MenuItem Cut;
 
     @FXML
-    void onMenuNew(ActionEvent event) {
-
+    void onMenuNew(ActionEvent event) throws IOException {
+        Stage newwindow = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Texteditor.fxml"));
+        Scene scene = new Scene(root,1000,800);
+        newwindow.setTitle("Text Editor");
+        newwindow.setScene(scene);
+        newwindow.show();
     }
 
     private File file;
@@ -112,12 +121,34 @@ public class Controller {
     }
 
     @FXML
-    void onMenuSave(ActionEvent event) {
+    void onMenuSave(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(primaryStage);
+        if (file != null) {
+            try {
+                FileOutputStream out = new FileOutputStream(file);
+                String str = mainarea.getText();
+                byte[] bs = str.getBytes();// 字符串转换成字节数组
+                out.write(bs);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
 
+//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+//        fileChooser.getExtensionFilters().add(extFilter);
+//        PrintWriter writer = new PrintWriter(file);
+//        writer.print(mainarea.getText());
+//        writer.close();
     }
-
     @FXML
-    void onMenuTime(ActionEvent event) {
+    void onMenuTime(ActionEvent event){
+
 
     }
 
@@ -153,43 +184,18 @@ public class Controller {
 
     @FXML
     void onMenuCopy(ActionEvent event) {
-        //Get the system clipboard
-        Clipboard clipboard = Clipboard.getSystemClipboard();
-        ClipboardContent content = new ClipboardContent();
-        //Get selected content
-        String text = mainarea.getSelectedText();
-        content.putString(text);
-        //Put selected content on clipboard
-        clipboard.setContent(content);
+        mainarea.copy();
 
     }
 
     @FXML
     void onMenuCut(ActionEvent event) {
-        Clipboard clipboard = Clipboard.getSystemClipboard();
-        ClipboardContent content = new ClipboardContent();
-        String text = mainarea.getSelectedText();
-        content.putString(text);
-        clipboard.setContent(content);
-        //Empty the textArea of the content that has been placed on the clipboard
-
-
+        mainarea.cut();
     }
 
     @FXML
     void onMenuPaste(ActionEvent event) {
-        Clipboard clipboard = Clipboard.getSystemClipboard();
-        Transferable content = (Transferable) clipboard.getContent(null);
-        if (content != null) {
-            if (content.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-                if (mainarea.getSelectedText() != null) {
-                    mainarea.replaceSelection(String.valueOf(content));
-                } else {
-                    int mouseposition = mainarea.getCaretPosition();
-                    mainarea.insertText(mouseposition, String.valueOf(content));
-                }
-            }
-        }
+        mainarea.paste();
     }
 
 }
