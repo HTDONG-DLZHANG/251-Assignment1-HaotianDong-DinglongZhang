@@ -5,12 +5,13 @@ package nz.massey.assignment1.texteditor;
  * @Author Haotian Dong
  * @Date 2020-09-29 19:15
  */
+import com.sun.corba.se.impl.ior.iiop.AlternateIIOPAddressComponentImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
+import javafx.scene.control.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -33,6 +34,9 @@ import java.awt.datatransfer.Transferable;
 import java.awt.font.LayoutPath;
 import java.io.*;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Controller {
 
@@ -148,8 +152,10 @@ public class Controller {
     }
     @FXML
     void onMenuTime(ActionEvent event){
-
-
+        //Set date format
+        SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //Display the date in the TextArea
+        mainarea.setText(time.format(new Date()));
     }
 
     @FXML
@@ -179,13 +185,22 @@ public class Controller {
 
     @FXML
     void onMenuAbout(ActionEvent event) {
+        //Create a message dialog box without a title
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //set the alert's title
+        alert.setTitle("About");
+        alert.setHeaderText(null);
+        alert.setContentText("Dinglong 19029922" +
+                "\n" +
+                "Haotian Dong");
+        alert.showAndWait();
 
     }
 
+    //Textarea has a ready-made copy, cut, paste method, which can be called directly
     @FXML
     void onMenuCopy(ActionEvent event) {
         mainarea.copy();
-
     }
 
     @FXML
