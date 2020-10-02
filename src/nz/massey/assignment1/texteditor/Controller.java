@@ -2,10 +2,11 @@ package nz.massey.assignment1.texteditor;
 
 /**
  * @Description texteditor
- * @Author Haotian Dong
+ * @Author Haotian Dong and Dinglong Zhang
  * @Date 2020-09-29 19:15
  */
 import com.sun.corba.se.impl.ior.iiop.AlternateIIOPAddressComponentImpl;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +17,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -25,6 +25,10 @@ import jdk.nashorn.tools.Shell;
 
 import javax.jnlp.ClipboardService;
 import javax.jnlp.FileContents;
+import javax.print.*;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttribute;
+import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.*;
 import javax.swing.text.DefaultStyledDocument;
 import java.awt.*;
@@ -125,7 +129,7 @@ public class Controller {
     }
 
     @FXML
-    void onMenuSave(ActionEvent event) throws IOException {
+    public void onMenuSave() throws IOException {
         Stage primaryStage = new Stage();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
@@ -160,11 +164,50 @@ public class Controller {
 
     @FXML
     void onMenuPrint(ActionEvent event) {
+        DocFlavor docFlavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
+        PrintService[] printService = PrintServiceLookup.lookupPrintServices(docFlavor,aset);
+        PrintService defaultservice = PrintServiceLookup.lookupDefaultPrintService();
+        PrintService service = ServiceUI.printDialog(null,200,200,printService,defaultservice,docFlavor,aset);
+        if (service != null) {
+            try {
+                DocPrintJob DPJ = service.createPrintJob();
+                FileInputStream FIS = new FileInputStream(String.valueOf(mainarea));
+            }catch (FileNotFoundException fe) {
+                fe.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("error");
+            alert.setHeaderText(null);
+            alert.setContentText("Print failed");
+            alert.showAndWait();
+        }
 
     }
 
     @FXML
-    void onMenuExit(ActionEvent event) {
+    void onMenuExit(ActionEvent event) throws IOException {
+        if (mainarea.getText().isEmpty()) {
+            Platform.exit();
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "exit without saving?",
+                ButtonType.YES,
+                ButtonType.NO,
+                ButtonType.CANCEL
+        );
+        alert.setTitle("confirm");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            Platform.exit();
+        } else if (alert.getResult() == ButtonType.NO) {
+            onMenuSave();
+            Platform.exit();
+        }
 
     }
 
