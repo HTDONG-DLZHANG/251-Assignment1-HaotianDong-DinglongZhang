@@ -224,8 +224,63 @@ public class Controller {
 
     }
 
+
     @FXML
     public void onmenusearch(ActionEvent actionEvent) {
+        final int[] startIndex = {0};
+
+        HBox h1 = new HBox();
+        h1.setPadding(new Insets(20, 5, 20, 5));
+        h1.setSpacing(5);
+        javafx.scene.control.Label lable1 = new javafx.scene.control.Label("Searching content");
+        javafx.scene.control.TextField tf1 = new javafx.scene.control.TextField();
+        h1.getChildren().addAll(lable1,tf1);
+
+        VBox v1 = new VBox();
+        v1.setPadding(new Insets(20, 5, 20, 10));
+        javafx.scene.control.Button btn1 = new javafx.scene.control.Button("Next");
+        v1.getChildren().addAll(btn1);
+
+        HBox findRootNode = new HBox();
+        findRootNode.getChildren().addAll(h1, v1);
+
+        Stage findStage = new Stage();
+        Scene scene1 = new Scene(findRootNode, 450, 90);
+        findStage.setTitle("Search");
+        findStage.setScene(scene1);
+        findStage.setResizable(false); // 固定窗口大小
+        findStage.show();
+        btn1.setOnAction((ActionEvent e) -> {
+            String textString = mainarea.getText(); // 获取记事本文本域的字符串
+            String tfString = tf1.getText(); // 获取要查找的字符串
+            if (!tf1.getText().isEmpty()) {
+                if (textString.contains(tfString)) {
+                    // 查找方法
+                    if (startIndex[0] == -1) {// not found
+                        Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                        alert1.titleProperty().set("Report");
+                        alert1.headerTextProperty().set("Nothing!");
+                        alert1.show();
+                    }
+                    startIndex[0] = mainarea.getText().indexOf(tf1.getText(), startIndex[0]);
+                    if (startIndex[0] >= 0 && startIndex[0] < mainarea.getText().length()) {
+                        mainarea.selectRange(startIndex[0], startIndex[0] + tf1.getText().length());
+                        startIndex[0] += tf1.getText().length();
+                    }
+                }
+                if (!textString.contains(tfString)) {
+                    Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                    alert1.titleProperty().set("Report");
+                    alert1.headerTextProperty().set("Nothing！");
+                    alert1.show();
+                }
+            } else if (tf1.getText().isEmpty()) {
+                Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                alert1.titleProperty().set("Error");
+                alert1.headerTextProperty().set("Text is empty!");
+                alert1.show();
+            }
+        });
 //        TextInputDialog dialog = new TextInputDialog();
 //        dialog.setTitle("Search");
 //        dialog.setHeaderText(null);
@@ -236,6 +291,27 @@ public class Controller {
 //
 //        }
 
+//        HBox hBox = new HBox();
+//        hBox.setPadding(new Insets(20));
+//        hBox.setSpacing(4);
+//        Label label = new Label("search content:");
+//        TextField tf = new TextField();
+//        hBox.getChildren().addAll(label,tf);
+//
+//        VBox vBox = new VBox();
+//        vBox.setPadding(new Insets(20));
+//        Button btn = new Button("search next");
+//        vBox.getChildren().add(btn);
+//
+//        HBox findrootnode = new HBox();
+//        findrootnode.getChildren().addAll(hBox,vBox);
+//
+//        Stage stage = new Stage();
+//        Scene scene = new Scene(findrootnode,450,90);
+//        stage.setTitle("search");
+//        stage.setScene(scene);
+//        stage.setResizable(false);
+//        stage.show();
 
         
     }
