@@ -312,7 +312,7 @@ public class Controller {
         alert.setHeaderText(null);
         alert.setContentText("Dinglong 19029922" +
                 "\n" +
-                "Haotian Dong");
+                "Haotian Dong 19029770");
         alert.showAndWait();
 
     }
