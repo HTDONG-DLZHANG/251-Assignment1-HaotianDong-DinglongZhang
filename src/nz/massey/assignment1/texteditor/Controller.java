@@ -236,27 +236,6 @@ public class Controller {
 //
 //        }
 
-        HBox hBox = new HBox();
-        hBox.setPadding(new Insets(20));
-        hBox.setSpacing(4);
-        Label label = new Label("search content:");
-        TextField tf = new TextField();
-        hBox.getChildren().addAll(label,tf);
-
-        VBox vBox = new VBox();
-        vBox.setPadding(new Insets(20));
-        Button btn = new Button("search next");
-        vBox.getChildren().add(btn);
-
-        HBox findrootnode = new HBox();
-        findrootnode.getChildren().addAll(hBox,vBox);
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(findrootnode,450,90);
-        stage.setTitle("search");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
 
         
     }
