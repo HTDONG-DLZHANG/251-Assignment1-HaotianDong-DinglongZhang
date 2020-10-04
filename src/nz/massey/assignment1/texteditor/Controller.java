@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -19,6 +20,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import jdk.nashorn.tools.Shell;
@@ -32,6 +35,9 @@ import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.*;
 import javax.swing.text.DefaultStyledDocument;
 import java.awt.*;
+import java.awt.Button;
+import java.awt.Label;
+import java.awt.TextField;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
@@ -41,6 +47,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Optional;
 
 public class Controller {
 
@@ -214,6 +221,44 @@ public class Controller {
     @FXML
     void onMenuSearch(ActionEvent event) {
 
+
+    }
+
+    @FXML
+    public void onmenusearch(ActionEvent actionEvent) {
+//        TextInputDialog dialog = new TextInputDialog();
+//        dialog.setTitle("Search");
+//        dialog.setHeaderText(null);
+//        dialog.setContentText("search content:");
+//
+//        Optional<String> result = dialog.showAndWait();
+//        if (result.isPresent()) {
+//
+//        }
+
+        HBox hBox = new HBox();
+        hBox.setPadding(new Insets(20));
+        hBox.setSpacing(4);
+        Label label = new Label("search content:");
+        TextField tf = new TextField();
+        hBox.getChildren().addAll(label,tf);
+
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(20));
+        Button btn = new Button("search next");
+        vBox.getChildren().add(btn);
+
+        HBox findrootnode = new HBox();
+        findrootnode.getChildren().addAll(hBox,vBox);
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(findrootnode,450,90);
+        stage.setTitle("search");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+
+        
     }
 
     @FXML
@@ -255,5 +300,6 @@ public class Controller {
     void onMenuPaste(ActionEvent event) {
         mainarea.paste();
     }
+
 
 }
