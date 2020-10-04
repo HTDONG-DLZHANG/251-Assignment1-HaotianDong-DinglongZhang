@@ -235,7 +235,60 @@ public class Controller {
 //        if (result.isPresent()) {
 //
 //        }
+        final int[] startIndex = {0};
 
+        HBox h1 = new HBox();
+        h1.setPadding(new Insets(20, 5, 20, 5));
+        h1.setSpacing(5);
+        javafx.scene.control.Label lable1 = new javafx.scene.control.Label("Searching content");
+        javafx.scene.control.TextField tf1 = new javafx.scene.control.TextField();
+        h1.getChildren().addAll(lable1,tf1);
+
+        VBox v1 = new VBox();
+        v1.setPadding(new Insets(20, 5, 20, 10));
+        javafx.scene.control.Button btn1 = new javafx.scene.control.Button("Next");
+        v1.getChildren().addAll(btn1);
+
+        HBox findRootNode = new HBox();
+        findRootNode.getChildren().addAll(h1, v1);
+
+        Stage findStage = new Stage();
+        Scene scene1 = new Scene(findRootNode, 450, 90);
+        findStage.setTitle("Search");
+        findStage.setScene(scene1);
+        findStage.setResizable(false); // Fixed window size
+        findStage.show();
+        btn1.setOnAction((ActionEvent e) -> {
+            String textString = mainarea.getText(); // Get the string of Notepad text field
+            String tfString = tf1.getText(); // Get the string to find
+            if (!tf1.getText().isEmpty()) {
+                if (textString.contains(tfString)) {
+                    // Find method
+                    if (startIndex[0] == -1) {// not found
+                        Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                        alert1.titleProperty().set("Report");
+                        alert1.headerTextProperty().set("Nothing!");
+                        alert1.show();
+                    }
+                    startIndex[0] = mainarea.getText().indexOf(tf1.getText(), startIndex[0]);
+                    if (startIndex[0] >= 0 && startIndex[0] < mainarea.getText().length()) {
+                        mainarea.selectRange(startIndex[0], startIndex[0] + tf1.getText().length());
+                        startIndex[0] += tf1.getText().length();
+                    }
+                }
+                if (!textString.contains(tfString)) {
+                    Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                    alert1.titleProperty().set("Report");
+                    alert1.headerTextProperty().set("Nothing！");
+                    alert1.show();
+                }
+            } else if (tf1.getText().isEmpty()) {
+                Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                alert1.titleProperty().set("Error");
+                alert1.headerTextProperty().set("Text is empty!");
+                alert1.show();
+            }
+        });
 
         
     }
