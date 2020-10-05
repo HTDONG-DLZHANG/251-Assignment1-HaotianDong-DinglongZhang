@@ -11,8 +11,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -178,12 +180,16 @@ public class Controller {
         PrintService service = ServiceUI.printDialog(null,200,200,printService,defaultservice,docFlavor,aset);
         if (service != null) {
             try {
-                DocPrintJob DPJ = service.createPrintJob();
-                FileInputStream FIS = new FileInputStream(String.valueOf(mainarea));
-            }catch (FileNotFoundException fe) {
-                fe.printStackTrace();
+                javafx.scene.canvas.Canvas canvas = new javafx.scene.canvas.Canvas(250,250);
+                GraphicsContext gc = canvas.getGraphicsContext2D();
+                gc.fillText(mainarea.getText(), 10, 10);
+                PrinterJob printerJob = PrinterJob.createPrinterJob();
+                printerJob.printPage(canvas);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } else {
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("error");
             alert.setHeaderText(null);
