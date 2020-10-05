@@ -224,9 +224,17 @@ public class Controller {
 
     }
 
-
     @FXML
     public void onmenusearch(ActionEvent actionEvent) {
+//        TextInputDialog dialog = new TextInputDialog();
+//        dialog.setTitle("Search");
+//        dialog.setHeaderText(null);
+//        dialog.setContentText("search content:");
+//
+//        Optional<String> result = dialog.showAndWait();
+//        if (result.isPresent()) {
+//
+//        }
         final int[] startIndex = {0};
 
         HBox h1 = new HBox();
@@ -248,14 +256,14 @@ public class Controller {
         Scene scene1 = new Scene(findRootNode, 450, 90);
         findStage.setTitle("Search");
         findStage.setScene(scene1);
-        findStage.setResizable(false); // 固定窗口大小
+        findStage.setResizable(false); // Fixed window size
         findStage.show();
         btn1.setOnAction((ActionEvent e) -> {
-            String textString = mainarea.getText(); // 获取记事本文本域的字符串
-            String tfString = tf1.getText(); // 获取要查找的字符串
+            String textString = mainarea.getText(); // Get the string of Notepad text field
+            String tfString = tf1.getText(); // Get the string to find
             if (!tf1.getText().isEmpty()) {
                 if (textString.contains(tfString)) {
-                    // 查找方法
+                    // Find method
                     if (startIndex[0] == -1) {// not found
                         Alert alert1 = new Alert(Alert.AlertType.WARNING);
                         alert1.titleProperty().set("Report");
@@ -281,37 +289,6 @@ public class Controller {
                 alert1.show();
             }
         });
-//        TextInputDialog dialog = new TextInputDialog();
-//        dialog.setTitle("Search");
-//        dialog.setHeaderText(null);
-//        dialog.setContentText("search content:");
-//
-//        Optional<String> result = dialog.showAndWait();
-//        if (result.isPresent()) {
-//
-//        }
-
-//        HBox hBox = new HBox();
-//        hBox.setPadding(new Insets(20));
-//        hBox.setSpacing(4);
-//        Label label = new Label("search content:");
-//        TextField tf = new TextField();
-//        hBox.getChildren().addAll(label,tf);
-//
-//        VBox vBox = new VBox();
-//        vBox.setPadding(new Insets(20));
-//        Button btn = new Button("search next");
-//        vBox.getChildren().add(btn);
-//
-//        HBox findrootnode = new HBox();
-//        findrootnode.getChildren().addAll(hBox,vBox);
-//
-//        Stage stage = new Stage();
-//        Scene scene = new Scene(findrootnode,450,90);
-//        stage.setTitle("search");
-//        stage.setScene(scene);
-//        stage.setResizable(false);
-//        stage.show();
 
         
     }
@@ -335,7 +312,7 @@ public class Controller {
         alert.setHeaderText(null);
         alert.setContentText("Dinglong 19029922" +
                 "\n" +
-                "Haotian Dong");
+                "Haotian Dong 19029770");
         alert.showAndWait();
 
     }
