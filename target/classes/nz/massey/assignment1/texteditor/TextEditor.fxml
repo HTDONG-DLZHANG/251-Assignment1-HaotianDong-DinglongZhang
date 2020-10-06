@@ -17,10 +17,13 @@
                   <MenuItem fx:id="Exit" mnemonicParsing="false" onAction="#onMenuExit" text="Exit" />
             </items>
           </Menu>
-            <Menu fx:id="search" mnemonicParsing="false" onAction="#onMenuSearch" text="Search">
-<!--                <MenuItem fx:id="Search" mnemonicParsing="false" onAction="#onmenusearch" text="search"/>-->
+            <Menu fx:id="PDF" mnemonicParsing="false" text="PDF">
+                <MenuItem fx:id="pdf" mnemonicParsing="false" onAction="#onmenupdf" text="pdf"/>
             </Menu>
-          <Menu fx:id="view" mnemonicParsing="false" onAction="#onMenuView" text="View" />
+            <Menu fx:id="search" mnemonicParsing="false" onAction="#onMenuSearch" text="Search">
+                <MenuItem fx:id="Search" mnemonicParsing="false" onAction="#onmenusearch" text="search"/>
+            </Menu>
+          <Menu fx:id="view" mnemonicParsing="false" onAction="#onMenuView" text="View"/>
             <Menu fx:id="manage" mnemonicParsing="false" onAction="#onMenuManage" text="Manage" />
             <Menu fx:id="help" mnemonicParsing="false" text="Help">
               <items>

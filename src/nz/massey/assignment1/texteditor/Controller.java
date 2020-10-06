@@ -5,6 +5,10 @@ package nz.massey.assignment1.texteditor;
  * @Author Haotian Dong and Dinglong Zhang
  * @Date 2020-09-29 19:15
  */
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.sun.corba.se.impl.ior.iiop.AlternateIIOPAddressComponentImpl;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -27,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import jdk.nashorn.tools.Shell;
+import sun.plugin.dom.exception.WrongDocumentException;
 
 import javax.jnlp.ClipboardService;
 import javax.jnlp.FileContents;
@@ -34,6 +39,8 @@ import javax.print.*;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttribute;
 import javax.print.attribute.PrintRequestAttributeSet;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
 import java.io.*;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -42,7 +49,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 public class Controller {
 
     @FXML
@@ -71,6 +77,7 @@ public class Controller {
 
     @FXML
     private MenuItem Exit;
+
 
     @FXML
     private Menu search;
@@ -112,7 +119,7 @@ public class Controller {
         newwindow.show();
     }
 
-    private File file;
+
     @FXML
     void onMenuOpen(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -347,6 +354,28 @@ public class Controller {
     }
 
     @FXML
+    void onmenupdf(ActionEvent actionEvent) {
+        Stage primaryStage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(primaryStage);
+        if (file != null) {
+            try {
+                FileOutputStream out = new FileOutputStream(file);
+                com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+                String text = mainarea.getText();
+                PdfWriter.getInstance(document,out);
+                document.open();
+                document.add(new Paragraph(text));
+                document.close();
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
+    }
+
+    @FXML
     void onMenuView(ActionEvent event) {
 
     }
@@ -385,6 +414,5 @@ public class Controller {
     void onMenuPaste(ActionEvent event) {
         mainarea.paste();
     }
-
 
 }
