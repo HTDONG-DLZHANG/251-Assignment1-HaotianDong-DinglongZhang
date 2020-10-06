@@ -8,7 +8,11 @@ package nz.massey.assignment1.texteditor;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
+import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
+import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 import com.sun.corba.se.impl.ior.iiop.AlternateIIOPAddressComponentImpl;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -49,6 +53,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
 public class Controller {
 
     @FXML
@@ -374,7 +379,24 @@ public class Controller {
             }
         }
     }
-
+    @FXML
+    void onmenuopenpdf(ActionEvent actionEvent) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
+        File file = fileChooser.showOpenDialog(anchorpane.getScene().getWindow());
+        if (file != null) {
+            PdfReader reader = new PdfReader(String.valueOf(file));
+            PdfReaderContentParser parser = new PdfReaderContentParser(reader);
+            StringBuffer buffer = new StringBuffer();
+            TextExtractionStrategy strategy;
+            for(int i = 1;i <= reader.getNumberOfPages();i++){
+                strategy = parser.processContent(i,new SimpleTextExtractionStrategy());
+                buffer.append(strategy.getResultantText());
+            }
+            mainarea.setText(buffer.toString());
+//            Runtime.getRuntime().exec("rundll32 url.dll FileProtocolHandler"+file.getAbsolutePath());
+        }
+    }
     @FXML
     void onMenuView(ActionEvent event) {
 
