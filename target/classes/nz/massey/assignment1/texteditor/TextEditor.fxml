@@ -19,6 +19,7 @@
           </Menu>
             <Menu fx:id="PDF" mnemonicParsing="false" text="PDF">
                 <MenuItem fx:id="pdf" mnemonicParsing="false" onAction="#onmenupdf" text="pdf"/>
+                <MenuItem fx:id="pdfopen" mnemonicParsing="false" onAction="#onmenuopenpdf" text="pdfopen"/>
             </Menu>
             <Menu fx:id="search" mnemonicParsing="false" onAction="#onMenuSearch" text="Search">
                 <MenuItem fx:id="Search" mnemonicParsing="false" onAction="#onmenusearch" text="search"/>

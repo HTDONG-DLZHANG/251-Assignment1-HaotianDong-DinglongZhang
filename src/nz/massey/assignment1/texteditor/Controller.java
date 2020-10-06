@@ -83,6 +83,8 @@ public class Controller {
     @FXML
     private MenuItem Exit;
 
+    @FXML
+    private Menu PDF;
 
     @FXML
     private Menu search;
@@ -205,10 +207,11 @@ public class Controller {
 
     @FXML
     void onMenuExit(ActionEvent event) throws IOException {
+        //If the content is empty, exit directly
         if (mainarea.getText().isEmpty()) {
-            Platform.exit();
+            System.exit(0);
         }
-
+        //Create a new pop-up window and add YES, NO, CANCEL
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "exit without saving?",
                 ButtonType.YES,
