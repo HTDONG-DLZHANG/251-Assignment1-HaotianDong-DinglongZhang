@@ -5,15 +5,12 @@ package nz.massey.assignment1.texteditor;
  * @Author Haotian Dong and Dinglong Zhang
  * @Date 2020-09-29 19:15
  */
-import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
-import com.sun.corba.se.impl.ior.iiop.AlternateIIOPAddressComponentImpl;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,35 +21,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jdk.nashorn.tools.Shell;
-import sun.plugin.dom.exception.WrongDocumentException;
 
-import javax.jnlp.ClipboardService;
-import javax.jnlp.FileContents;
-import javax.print.*;
+import javax.print.DocFlavor;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.ServiceUI;
 import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttribute;
 import javax.print.attribute.PrintRequestAttributeSet;
-import javax.swing.text.Document;
-import javax.swing.text.DocumentFilter;
-import java.io.*;
-import java.net.URL;
-import java.sql.ResultSet;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class Controller {
 
@@ -69,7 +55,7 @@ public class Controller {
     private MenuItem newfile;
 
     @FXML
-    private MenuItem openfile;
+    public MenuItem openfile;
 
     @FXML
     private MenuItem savefile;
@@ -242,11 +228,13 @@ public class Controller {
         h1.setSpacing(5);
         javafx.scene.control.Label lable1 = new javafx.scene.control.Label("Searching content");
         javafx.scene.control.TextField tf1 = new javafx.scene.control.TextField();
+        tf1.setId("textfield1");
         h1.getChildren().addAll(lable1,tf1);
 
         VBox v1 = new VBox();
         v1.setPadding(new Insets(20, 5, 20, 10));
         javafx.scene.control.Button btn1 = new javafx.scene.control.Button("Next");
+        btn1.setId("nextbutton");
         v1.getChildren().addAll(btn1);
 
         HBox findRootNode = new HBox();
