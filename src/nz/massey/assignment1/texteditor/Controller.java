@@ -26,6 +26,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.odftoolkit.odfdom.doc.OdfDocument;
+import org.odftoolkit.odfdom.doc.OdfTextDocument;
 
 import javax.print.DocFlavor;
 import javax.print.PrintService;
@@ -114,11 +116,12 @@ public class Controller {
 
 
     @FXML
-    void onMenuOpen(ActionEvent event) throws IOException {
+    void onMenuOpen(ActionEvent event) throws Exception {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT", "*.txt"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ODT","*.odt"));
         File file = fileChooser.showOpenDialog(anchorpane.getScene().getWindow());
-        if (file != null) {
+        if (file.getName().endsWith(".txt")) {
             //Create a file input stream object
             FileInputStream in = new FileInputStream(file);
             byte[] ts = new byte[100000];
@@ -126,6 +129,11 @@ public class Controller {
             //Write the contents of the file to the TextArea
             mainarea.setText(new String(ts));
             in.close();
+        }
+        if (file.getName().endsWith(".odt")) {
+            OdfTextDocument odf = (OdfTextDocument) OdfDocument.loadDocument(file);
+            String text = odf.getContentRoot().getTextContent();
+            mainarea.setText(text);
         }
     }
 
