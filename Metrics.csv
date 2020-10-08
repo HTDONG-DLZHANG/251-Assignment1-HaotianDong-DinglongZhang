@@ -1,0 +1,20 @@
+Lines of code metrics,ÖÜËÄ, 8 10ÔÂ 2020 10:08:59 CST
+Package,LOC,LOC(rec),LOCp,LOCp(rec),LOCt,LOCt(rec)
+"",32,480,0,448,32,32
+"nz",n/a,448,n/a,448,n/a,0
+"nz.massey",n/a,448,n/a,448,n/a,0
+"nz.massey.assignment1",n/a,448,n/a,448,n/a,0
+"nz.massey.assignment1.texteditor",448,448,448,448,0,0
+
+Module,L(Groovy),L(HTML),L(J),L(KT),L(XML),LOC,LOCp,LOCt,NCLOC,NCLOCp,NCLOCt
+"251-Assignment1-HaotianDong-DinglongZhang",0,"2,013",434,0,550,"2,998",448,32,"2,965",415,32
+
+FileType,LOC,NCLOC
+"HTML","2,013","2,013"
+"Java",434,401
+"Markdown",1,1
+"XML",550,550
+
+Project,L(Groovy),L(HTML),L(J),L(KT),L(XML),LOC,LOCp,LOCt,NCLOC,NCLOCp,NCLOCt
+"project",0,"2,013",434,0,550,"2,998",448,32,"2,965",415,32
+
