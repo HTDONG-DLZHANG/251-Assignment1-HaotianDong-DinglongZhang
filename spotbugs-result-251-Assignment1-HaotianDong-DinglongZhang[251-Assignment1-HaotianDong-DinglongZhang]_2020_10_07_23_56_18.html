@@ -1,0 +1,424 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>SpotBugs Report</title>
+      <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+		</style>
+   </head>
+   <body>
+      <h1>SpotBugs Report</h1>
+      <p>Produced using <a href="https://spotbugs.github.io">SpotBugs</a>4.1.3.</p>
+      <p>Project: 
+			251-Assignment1-HaotianDong-DinglongZhang[251-Assignment1-HaotianDong-DinglongZhang]</p>
+      <h2>Metrics</h2>
+      <p>272 lines of code analyzed,
+	in 2 classes, 
+	in 1 packages.</p>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Metric</th>
+            <th align="right">Total</th>
+            <th align="right">Density*</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>High Priority Warnings</td>
+            <td align="right">2</td>
+            <td align="right">7.35</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Medium Priority Warnings</td>
+            <td align="right">7</td>
+            <td align="right">25.74</td>
+         </tr>
+         <tr class="$totalClass">
+            <td>
+               <b>Total Warnings</b>
+            </td>
+            <td align="right">
+               <b>9</b>
+            </td>
+            <td align="right">
+               <b>33.09</b>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+      </p>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Summary</h2>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Warning Type</th>
+            <th align="right">Number</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+            </td>
+            <td align="right">3</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_EXPERIMENTAL">Experimental Warnings</a>
+            </td>
+            <td align="right">3</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_I18N">Internationalization Warnings</a>
+            </td>
+            <td align="right">2</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">1</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <b>Total</b>
+            </td>
+            <td align="right">
+               <b>9</b>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h1>Warnings</h1>
+      <p>Click on each warning link to see a full description of the issue, and
+	    details of how to resolve it.</p>
+      <h2>
+         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+      </h2>
+      <table class="warningtable"
+             width="100%"
+             cellspacing="2"
+             cellpadding="5">
+         <tr class="tableheader">
+            <th align="left">Warning</th>
+            <th align="left">Priority</th>
+            <th align="left">Details</th>
+         </tr>
+         <tr class="tablerow1">
+            <td width="20%" valign="top">
+               <a href="#DE_MIGHT_IGNORE">Method might ignore exception</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>nz.massey.assignment1.texteditor.Controller.onMenuSave() might ignore java.lang.Exception<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java Controller.java,
+					
+						line 155 155 155<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuSave()<br/>Exception class java.lang.Exception<br/>At Controller.java:[line 155]<br/>At Controller.java:[line 155]<br/>At Controller.java:[line 155]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0">
+            <td width="20%" valign="top">
+               <a href="#DE_MIGHT_IGNORE">Method might ignore exception</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>nz.massey.assignment1.texteditor.Controller.onmenupdf(ActionEvent) might ignore java.lang.Exception<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java Controller.java,
+					
+						line 376 376 376<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onmenupdf(ActionEvent)<br/>Exception class java.lang.Exception<br/>At Controller.java:[line 376]<br/>At Controller.java:[line 376]<br/>At Controller.java:[line 376]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1">
+            <td width="20%" valign="top">
+               <a href="#RR_NOT_CHECKED">Method ignores results of InputStream.read()</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>nz.massey.assignment1.texteditor.Controller.onMenuOpen(ActionEvent) ignores result of java.io.FileInputStream.read(byte[])<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java,
+					
+						line 128 128<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuOpen(ActionEvent)<br/>Called method java.io.FileInputStream.read(byte[])<br/>At Controller.java:[line 128]<br/>At Controller.java:[line 128]</p>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="Warnings_EXPERIMENTAL">Experimental Warnings</a>
+      </h2>
+      <table class="warningtable"
+             width="100%"
+             cellspacing="2"
+             cellpadding="5">
+         <tr class="tableheader">
+            <th align="left">Warning</th>
+            <th align="left">Priority</th>
+            <th align="left">Details</th>
+         </tr>
+         <tr class="tablerow1">
+            <td width="20%" valign="top">
+               <a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>nz.massey.assignment1.texteditor.Controller.onMenuOpen(ActionEvent) may fail to clean up java.io.InputStream on checked exception<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java Controller.java,
+					
+						line 126 127 128<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuOpen(ActionEvent)<br/>Reference type java.io.InputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at Controller.java:[line 126] is not discharged<br/>Path continues at Controller.java:[line 127]<br/>Path continues at Controller.java:[line 128]<br/>Remaining obligations: {InputStream x 1}</p>
+            </td>
+         </tr>
+         <tr class="tablerow0">
+            <td width="20%" valign="top">
+               <a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>nz.massey.assignment1.texteditor.Controller.onMenuSave() may fail to clean up java.io.OutputStream on checked exception<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java Controller.java Controller.java Controller.java Controller.java,
+					
+						line 149 150 151 152 155 165<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuSave()<br/>Reference type java.io.OutputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at Controller.java:[line 149] is not discharged<br/>Path continues at Controller.java:[line 150]<br/>Path continues at Controller.java:[line 151]<br/>Path continues at Controller.java:[line 152]<br/>Path continues at Controller.java:[line 155]<br/>Path continues at Controller.java:[line 165]<br/>Remaining obligations: {OutputStream x 1}</p>
+            </td>
+         </tr>
+         <tr class="tablerow1">
+            <td width="20%" valign="top">
+               <a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>nz.massey.assignment1.texteditor.Controller.onmenupdf(ActionEvent) may fail to clean up java.io.OutputStream on checked exception<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java Controller.java Controller.java,
+					
+						line 369 370 376 380<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onmenupdf(ActionEvent)<br/>Reference type java.io.OutputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at Controller.java:[line 369] is not discharged<br/>Path continues at Controller.java:[line 370]<br/>Path continues at Controller.java:[line 376]<br/>Path continues at Controller.java:[line 380]<br/>Remaining obligations: {OutputStream x 1}</p>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="Warnings_I18N">Internationalization Warnings</a>
+      </h2>
+      <table class="warningtable"
+             width="100%"
+             cellspacing="2"
+             cellpadding="5">
+         <tr class="tableheader">
+            <th align="left">Warning</th>
+            <th align="left">Priority</th>
+            <th align="left">Details</th>
+         </tr>
+         <tr class="tablerow1">
+            <td width="20%" valign="top">
+               <a href="#DM_DEFAULT_ENCODING">Reliance on default encoding</a>
+            </td>
+            <td width="10%" valign="top">High</td>
+            <td width="70%">
+               <p>Found reliance on default encoding in nz.massey.assignment1.texteditor.Controller.onMenuOpen(ActionEvent): new String(byte[])<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java,
+					
+						line 130 130<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuOpen(ActionEvent)<br/>Called method new String(byte[])<br/>At Controller.java:[line 130]<br/>At Controller.java:[line 130]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0">
+            <td width="20%" valign="top">
+               <a href="#DM_DEFAULT_ENCODING">Reliance on default encoding</a>
+            </td>
+            <td width="10%" valign="top">High</td>
+            <td width="70%">
+               <p>Found reliance on default encoding in nz.massey.assignment1.texteditor.Controller.onMenuSave(): String.getBytes()<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java,
+					
+						line 151 151<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuSave()<br/>Called method String.getBytes()<br/>At Controller.java:[line 151]<br/>At Controller.java:[line 151]</p>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+      </h2>
+      <table class="warningtable"
+             width="100%"
+             cellspacing="2"
+             cellpadding="5">
+         <tr class="tableheader">
+            <th align="left">Warning</th>
+            <th align="left">Priority</th>
+            <th align="left">Details</th>
+         </tr>
+         <tr class="tablerow1">
+            <td width="20%" valign="top">
+               <a href="#REC_CATCH_EXCEPTION">Exception is caught when Exception is not thrown</a>
+            </td>
+            <td width="10%" valign="top">Medium</td>
+            <td width="70%">
+               <p>Exception is caught when Exception is not thrown in nz.massey.assignment1.texteditor.Controller.onMenuSave()<br/>
+                  <br/>
+                  <br/>In file Controller.java Controller.java,
+					
+						line 155 155<br/>In class nz.massey.assignment1.texteditor.Controller<br/>In method nz.massey.assignment1.texteditor.Controller.onMenuSave()<br/>At Controller.java:[line 155]<br/>At Controller.java:[line 155]</p>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h1>
+         <a name="Details">Warning Types</a>
+      </h1>
+      <h2>
+         <a name="DE_MIGHT_IGNORE">Method might ignore exception</a>
+      </h2>
+
+  <p> This method might ignore an exception.&nbsp; In general, exceptions
+  should be handled or reported in some way, or they should be thrown
+  out of the method.</p>
+
+    <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="DM_DEFAULT_ENCODING">Reliance on default encoding</a>
+      </h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Method may fail to clean up stream or resource on checked exception</a>
+      </h2>
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          For sending feedback, check:
+          </p>
+          <ul>
+            <li><a href="https://github.com/spotbugs/spotbugs/blob/master/CONTRIBUTING.md">contributing guideline</a></li>
+            <li><a href="https://github.com/spotbugs/discuss/issues?q=">malinglist</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="REC_CATCH_EXCEPTION">Exception is caught when Exception is not thrown</a>
+      </h2>
+  
+  <p>
+  This method uses a try-catch block that catches Exception objects, but Exception is not
+  thrown within the try block, and RuntimeException is not explicitly caught.  It is a common bug pattern to
+  say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+  each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well,
+  masking potential bugs.
+  </p>
+  <p>A better approach is to either explicitly catch the specific exceptions that are thrown,
+  or to explicitly catch RuntimeException exception, rethrow it, and then catch all non-Runtime Exceptions, as shown below:</p>
+<pre><code>try {
+    ...
+} catch (RuntimeException e) {
+    throw e;
+} catch (Exception e) {
+    ... deal with all non-runtime exceptions ...
+}
+</code></pre>
+  
+     <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>
+         <a name="RR_NOT_CHECKED">Method ignores results of InputStream.read()</a>
+      </h2>
+
+  <p> This method ignores the return value of one of the variants of
+  <code>java.io.InputStream.read()</code> which can return multiple bytes.&nbsp;
+  If the return value is not checked, the caller will not be able to correctly
+  handle the case where fewer bytes were read than the caller requested.&nbsp;
+  This is a particularly insidious kind of bug, because in many programs,
+  reads from input streams usually do read the full amount of data requested,
+  causing the program to fail only sporadically.</p>
+
+    <p>
+         <br/>
+         <br/>
+      </p>
+   </body>
+</html>
