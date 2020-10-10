@@ -413,7 +413,7 @@ public class Controller {
         //set the alert's title
         alert.setTitle("About");
         alert.setHeaderText(null);
-        alert.setContentText("Dinglong 19029922" +
+        alert.setContentText("Dinglong Zhang 19029922" +
                 "\n" +
                 "Haotian Dong 19029770");
         alert.showAndWait();
